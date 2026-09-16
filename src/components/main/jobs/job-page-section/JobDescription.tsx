@@ -22,7 +22,7 @@ const JobDescription = ({ job }: IJobDescription) => {
               {job.location}
             </p>
           </div>
-          <button className="bg-btn-primary py-4  rounded-main text-white  mt-13 md:mt-0 md:px-7 cursor-poiner ">
+          <button className="bg-btn-primary py-4  rounded-main text-white  mt-13 md:mt-0 md:px-7 cursor-poiner hover:bg-[#939bf4] ">
             Apply Now
           </button>
         </div>
@@ -55,7 +55,6 @@ const JobDescription = ({ job }: IJobDescription) => {
           </ul>
         </div>
       </div>
-      
     </div>
   );
 };
