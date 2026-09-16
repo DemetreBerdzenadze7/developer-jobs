@@ -1,5 +1,12 @@
+import InputSection from "@/components/main/input-section/InputSection";
+import Container from "@/container/Container";
+
 const Jobs = () => {
-  return <div></div>;
+  return (
+    <Container>
+      <InputSection />
+    </Container>
+  );
 };
 
 export default Jobs;

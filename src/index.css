@@ -9,10 +9,10 @@
   --color-jobs: #19202d;
   --color-description: #6e8098;
   --color-btn-primary: #5964e0;
-  --font-size-jobs: 20px;
-  --font-size-desciption: 16px;
-  --font-size-country: 14px;
-  --border-radius-main: 6px;
+  --text-jobs: 20px;
+  --text-desciption: 16px;
+  --text-country: 14px;
+  --radius-main: 6px;
 }
 
 @theme inline {
@@ -140,5 +140,6 @@
 }
 
 body {
+  background-color: #f4f6f8;
   font-family: "Kumbh Sans", sans-serif;
 }
