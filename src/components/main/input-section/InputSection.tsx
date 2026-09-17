@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import Filter from "./Filter";
 
 const InputSection = () => {
   const titleRef = useRef<null | HTMLInputElement>(null);
@@ -14,6 +15,7 @@ const InputSection = () => {
 
   return (
     <section className="-mt-20 md:-mt-23 lg:-mt-19">
+      <Filter />
       <div className="flex items-center justify-between gap-4 w-full p-2 md:p-0  ounded-main bg-white rounded-main ">
         <div className=" w-full md:border-r md:border-description/20 md:w-[35%] lg:w-[45%]">
           <div className="md:flex md:items-center  md:gap-4 md:p-3">
