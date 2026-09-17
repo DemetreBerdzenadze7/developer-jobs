@@ -36,7 +36,7 @@ const JobDescription = ({ job }: IJobDescription) => {
           <p className="text-description mt-7">{job.requirements.content}</p>
           <ul className="list-disc mt-8 px-4">
             {job.requirements.items.map((item) => (
-              <li key-={item} className="mb-2 text-description">
+              <li key={item} className="mb-2 text-description">
                 {item}
               </li>
             ))}

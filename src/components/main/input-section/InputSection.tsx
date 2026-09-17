@@ -1,9 +1,20 @@
 import { useRef } from "react";
 import Filter from "./Filter";
+import { useJob } from "@/context/JobsContext";
 
 const InputSection = () => {
   const titleRef = useRef<null | HTMLInputElement>(null);
   const locationRef = useRef<null | HTMLInputElement>(null);
+  const {
+    clicked,
+    setClicked,
+    titleFilter,
+    setTitleFilter,
+    locationFilter,
+    setLocationFilter,
+    checked,
+    setChecked,
+  } = useJob();
 
   const handleSearchFocus = (): void => {
     titleRef.current?.focus();
@@ -13,9 +24,17 @@ const InputSection = () => {
     locationRef.current?.focus();
   };
 
+  const handleChecked = () => {
+    setChecked(!checked);
+    if (checked) {
+      setTitleFilter("");
+      setLocationFilter("");
+    }
+  };
+
   return (
     <section className="-mt-20 md:-mt-23 lg:-mt-19">
-
+      {clicked && <Filter />}
       <div className="flex items-center justify-between gap-4 w-full p-2 md:p-0  ounded-main bg-white rounded-main ">
         <div className=" w-full md:border-r md:border-description/20 md:w-[35%] lg:w-[45%]">
           <div className="md:flex md:items-center  md:gap-4 md:p-3">
@@ -30,7 +49,9 @@ const InputSection = () => {
               type="text"
               placeholder="Filter by title..."
               ref={titleRef}
+              value={titleFilter}
               className="outline-0 placeholder:text-desctiption placeholder:text-jobs placeholder:opacity-[0.5] w-full py-4 px-2"
+              onChange={(e) => setTitleFilter(e.target.value)}
             />
           </div>
         </div>
@@ -43,20 +64,27 @@ const InputSection = () => {
               type="text"
               placeholder="Filter by location..."
               ref={locationRef}
+              value={locationFilter}
               className="outline-0 placeholder:text-desctiption placeholder:text-jobs placeholder:opacity-[0.5] w-full py-4 px-2  "
+              onChange={(e) => setLocationFilter(e.target.value)}
             />
           </div>
         </div>
         <div className="flex items-center gap-4 md:w-[25%] lg:w-[20%]">
-          <button className="cursor-pointer md:hidden">
+          <button
+            className="cursor-pointer md:hidden"
+            onClick={() => setClicked(true)}
+          >
             <img src="/images/mobile/icon-filter.svg" alt="Filter icon" />
           </button>
           <div className="hidden md:flex items-center gap-3">
             <input
               type="checkbox"
+              checked={checked}
               name="job"
               id="job"
               className="size-5 appearance-none rounded-sm border border-gray-400 bg-white transition duration-200 checked:border-blue-600 checked:bg-blue-600 checked:relative checked:after:content-['✓'] checked:after:absolute  checked:after:left-1/2  checked:after:top-1/2  checked:after:-translate-x-1/2  checked:after:-translate-y-1/2  checked:after:text-sm  checked:after:font-bold  checked:after:text-white"
+              onChange={handleChecked}
             />
             <label
               htmlFor="job"

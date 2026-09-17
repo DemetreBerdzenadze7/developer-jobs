@@ -7,8 +7,8 @@ interface JobTypes {
   setLocationFilter: (locationFilter: string) => void;
   checked: boolean;
   setChecked: (cheked: boolean) => void;
-  search: boolean;
-  setSearch: (search: boolean) => void;
+  clicked: boolean;
+  setClicked: (clicked: boolean) => void;
   theme: string;
   setTheme: (theme: string) => void;
 }
@@ -22,8 +22,8 @@ export const JobProvider = ({ children }: Children) => {
   const [titleFilter, setTitleFilter] = useState<string>("");
   const [locationFilter, setLocationFilter] = useState<string>("");
   const [checked, setChecked] = useState<boolean>(false);
-  const [search, setSearch] = useState<boolean>(false);
   const [theme, setTheme] = useState<string>("");
+  const [clicked, setClicked] = useState<boolean>(false);
 
   return (
     <jobContext.Provider
@@ -34,10 +34,10 @@ export const JobProvider = ({ children }: Children) => {
         setLocationFilter,
         checked,
         setChecked,
-        search,
-        setSearch,
         theme,
         setTheme,
+        clicked,
+        setClicked,
       }}
     >
       {children}
