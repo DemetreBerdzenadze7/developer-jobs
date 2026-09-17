@@ -14,6 +14,7 @@ const InputSection = () => {
     setLocationFilter,
     checked,
     setChecked,
+    theme,
   } = useJob();
 
   const handleSearchFocus = (): void => {
@@ -35,7 +36,13 @@ const InputSection = () => {
   return (
     <section className="-mt-20 md:-mt-23 lg:-mt-19">
       {clicked && <Filter />}
-      <div className="flex items-center justify-between gap-4 w-full p-2 md:p-0  ounded-main bg-white rounded-main ">
+      <div
+        className={
+          theme === "dark"
+            ? "flex items-center justify-between gap-4 w-full p-2 md:p-0 rounded-main bg-jobs shadow-[0_15px_30px_rgba(0,0,0,0.22)]"
+            : "flex items-center justify-between gap-4 w-full p-2 md:p-0 rounded-main bg-white shadow-[0_15px_30px_rgba(25,32,45,0.08)]"
+        }
+      >
         <div className=" w-full md:border-r md:border-description/20 md:w-[35%] lg:w-[45%]">
           <div className="md:flex md:items-center  md:gap-4 md:p-3">
             <button onClick={handleSearchFocus}>
@@ -50,7 +57,11 @@ const InputSection = () => {
               placeholder="Filter by title..."
               ref={titleRef}
               value={titleFilter}
-              className="outline-0 placeholder:text-desctiption placeholder:text-jobs placeholder:opacity-[0.5] w-full py-4 px-2"
+              className={
+                theme === "dark"
+                  ? "outline-0 placeholder:text-white/50 text-white w-full py-4 px-2"
+                  : "outline-0 placeholder:text-jobs/50 text-jobs w-full py-4 px-2"
+              }
               onChange={(e) => setTitleFilter(e.target.value)}
             />
           </div>
@@ -65,7 +76,11 @@ const InputSection = () => {
               placeholder="Filter by location..."
               ref={locationRef}
               value={locationFilter}
-              className="outline-0 placeholder:text-desctiption placeholder:text-jobs placeholder:opacity-[0.5] w-full py-4 px-2  "
+              className={
+                theme === "dark"
+                  ? "outline-0 placeholder:text-white/50 text-white w-full py-4 px-2"
+                  : "outline-0 placeholder:text-jobs/50 text-jobs w-full py-4 px-2"
+              }
               onChange={(e) => setLocationFilter(e.target.value)}
             />
           </div>
@@ -75,7 +90,11 @@ const InputSection = () => {
             className="cursor-pointer md:hidden"
             onClick={() => setClicked(true)}
           >
-            <img src="/images/mobile/icon-filter.svg" alt="Filter icon" />
+            <img
+              src="/images/mobile/icon-filter.svg"
+              alt="Filter icon"
+              className={theme === "dark" ? "brightness-0 invert" : ""}
+            />
           </button>
           <div className="hidden md:flex items-center gap-3">
             <input
@@ -88,7 +107,11 @@ const InputSection = () => {
             />
             <label
               htmlFor="job"
-              className="text-desciption font-bold text-jobs"
+              className={
+                theme === "dark"
+                  ? "text-description font-bold text-white"
+                  : "text-description font-bold text-jobs"
+              }
             >
               Full Time
             </label>

@@ -1,4 +1,10 @@
-import { createContext, useContext, type ReactNode, useState } from "react";
+import {
+  createContext,
+  useContext,
+  type ReactNode,
+  useEffect,
+  useState,
+} from "react";
 
 interface JobTypes {
   titleFilter: string;
@@ -22,8 +28,17 @@ export const JobProvider = ({ children }: Children) => {
   const [titleFilter, setTitleFilter] = useState<string>("");
   const [locationFilter, setLocationFilter] = useState<string>("");
   const [checked, setChecked] = useState<boolean>(false);
-  const [theme, setTheme] = useState<string>("");
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light",
+  );
   const [clicked, setClicked] = useState<boolean>(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    document.body.style.backgroundColor =
+      theme === "dark" ? "#121721" : "#f4f6f8";
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   return (
     <jobContext.Provider

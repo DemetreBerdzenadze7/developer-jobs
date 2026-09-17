@@ -1,12 +1,15 @@
 import Header from "@/components/header/Header";
 
 import { Outlet } from "react-router";
+import { JobProvider } from "@/context/JobsContext";
 
 const Layout = () => {
   return (
     <>
-      <Header />
-      <Outlet />
+      <JobProvider>
+        <Header />
+        <Outlet />
+      </JobProvider>
     </>
   );
 };

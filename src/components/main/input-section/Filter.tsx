@@ -3,8 +3,14 @@ import { useRef } from "react";
 
 const Filter = () => {
   const locationRef = useRef<null | HTMLInputElement>(null);
-  const { setClicked, locationFilter, setLocationFilter, checked, setChecked } =
-    useJob();
+  const {
+    setClicked,
+    locationFilter,
+    setLocationFilter,
+    checked,
+    setChecked,
+    theme,
+  } = useJob();
 
   const handleFocus = () => {
     locationRef.current?.focus();
@@ -15,7 +21,11 @@ const Filter = () => {
       onClick={() => setClicked(false)}
     >
       <div
-        className="w-81.75 h-60.25 z-15 bg-white  rounded-main  "
+        className={
+          theme === "dark"
+            ? "w-81.75 h-45.25 z-15 bg-jobs rounded-main shadow-[0_15px_30px_rgba(0,0,0,0.22)]"
+            : "w-81.75 h-45.25 z-15 bg-white rounded-main shadow-[0_15px_30px_rgba(25,32,45,0.08)]"
+        }
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-4 border-b border-description/20 py-5 px-4">
@@ -27,7 +37,11 @@ const Filter = () => {
             ref={locationRef}
             value={locationFilter}
             placeholder="Filter by location..."
-            className="outline-0 bg-amber-100 w-full p-3 placeholder:text-jobs "
+            className={
+              theme === "dark"
+                ? "outline-0 w-full p-3 placeholder:text-white/50 text-white"
+                : "outline-0 w-full p-3 placeholder:text-jobs/50 text-jobs"
+            }
             onChange={(e) => setLocationFilter(e.target.value)}
           />
         </div>
@@ -42,7 +56,11 @@ const Filter = () => {
             />
             <label
               htmlFor="filter"
-              className="text-desciption font-bold text-jobs cursor-pointer"
+              className={
+                theme === "dark"
+                  ? "text-description font-bold text-white cursor-pointer"
+                  : "text-description font-bold text-jobs cursor-pointer"
+              }
             >
               Full Time Only
             </label>
