@@ -1,6 +1,5 @@
 import data from "../../../data/data.json";
 import { Link } from "react-router";
-import { useMemo } from "react";
 import { useJob } from "@/context/JobsContext";
 
 const JobsCard = () => {
@@ -8,15 +7,12 @@ const JobsCard = () => {
 
   const fullTime = data.filter((item) => item.contract === "Full Time");
 
-  const filtered = useMemo(
-    () =>
-      data.filter(
-        (item) =>
-          item.position.toLowerCase().includes(titleFilter.toLowerCase()) &&
-          item.location.toLowerCase().includes(locationFilter.toLowerCase()),
-      ),
-    [titleFilter, locationFilter],
+  const filtered = data.filter(
+    (item) =>
+      item.position.toLowerCase().includes(titleFilter.toLowerCase()) &&
+      item.location.toLowerCase().includes(locationFilter.toLowerCase()),
   );
+
   return (
     <div>
       <div className="flex flex-col gap-12.5 md:grid md:grid-cols-2 lg:grid-cols-3">

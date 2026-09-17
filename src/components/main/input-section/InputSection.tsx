@@ -93,13 +93,6 @@ const InputSection = () => {
               Full Time
             </label>
           </div>
-          <button className="w-12 h-12 bg-btn-primary flex items-center justify-center rounded-main cursor-pointer">
-            <img
-              src="/images/desktop/icon-search.svg"
-              alt="Search icon"
-              className="brightness-0 invert"
-            />
-          </button>
         </div>
       </div>
     </section>
